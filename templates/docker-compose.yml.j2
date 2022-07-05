@@ -49,7 +49,7 @@ services:
       - POSTGRES_HOST=db
       - REDIS_HOST=redis
       # for Apache to work with reverse proxy
-      - APACHE_DISABLE_REWRITE_IP: 1
+      - APACHE_DISABLE_REWRITE_IP: true
       # set to reverse proxy IP address, i.e. caddy
       - POSTGRES_HOST: ${POSTGRES_HOST}
       - POSTGRES_DB: ${POSTGRES_DB}

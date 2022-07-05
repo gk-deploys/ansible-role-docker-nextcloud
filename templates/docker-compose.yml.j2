@@ -40,9 +40,9 @@ services:
       - POSTGRES_HOST=db
       - REDIS_HOST=redis
       # for Apache to work with reverse proxy
-      - APACHE_DISABLE_REWRITE_IP: true
+      - APACHE_DISABLE_REWRITE_IP=1
       # set to reverse proxy IP address, i.e. caddy
-      - TRUSTED_PROXIES: caddy
+      - TRUSTED_PROXIES=caddy
     networks:
       - proxy_{{ nextcloud_container_name }}
       - internal

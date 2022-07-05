@@ -42,7 +42,8 @@ services:
       # for Apache to work with reverse proxy
       - APACHE_DISABLE_REWRITE_IP=1
       # set to reverse proxy IP address, i.e. caddy
-      - TRUSTED_PROXIES=caddy
+      - TRUSTED_PROXIES=172.16.0.0/12
+      - NEXTCLOUD_TRUSTED_DOMAINS=kbck.at
     networks:
       - proxy_{{ nextcloud_container_name }}
       - internal

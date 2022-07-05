@@ -1,3 +1,24 @@
 ---
 
-# nothing to do, nextcloud creates directories automatically
+- name: Create directories for bind volumes
+  file:
+    path: "{{ nextcloud_basepath }}/{{ item }}"
+    state: directory
+    owner: www-data
+    group: root
+    mode: '0700'
+  loop:
+    - nextcloud
+    - apps
+    - config
+
+- name: Create directories for bind volumes
+  file:
+    path: "{{ nextcloud_basepath }}/{{ item }}"
+    state: directory
+    owner: 999
+    group: root
+    mode: '0700'
+  loop:
+    - db
+

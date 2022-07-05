@@ -25,6 +25,8 @@ services:
     hostname: nextcloud
     container_name: {{ nextcloud_container_name }}
     restart: always
+    mem_limit: 2048m
+    mem_reservation: 512m
     expose:
       - 80
     links:

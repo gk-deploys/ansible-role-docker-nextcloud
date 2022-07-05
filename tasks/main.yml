@@ -1,5 +1,5 @@
 ---
 # tasks file for docker-nextcloud
 
-- include: create_directories.yml
-- include: copy_templates.yml
+- include_tasks: create_directories.yml
+- include_tasks: copy_templates.yml

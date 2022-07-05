@@ -34,7 +34,6 @@ services:
       - ./nextcloud:/var/www/html
       - ./apps:/var/www/html/custom_apps
       - ./config:/var/www/html/config
-      #- ./data:/var/www/html/data:rw
       - cifs-cloudstorage:/var/www/html/data:rw
     env_file: .env
     environment:

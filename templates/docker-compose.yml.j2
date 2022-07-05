@@ -51,7 +51,10 @@ services:
       # for Apache to work with reverse proxy
       - APACHE_DISABLE_REWRITE_IP: 1
       # set to reverse proxy IP address, i.e. caddy
-      - TRUSTED_PROXIES: 172.20.0.3/16
+      - POSTGRES_HOST: ${POSTGRES_HOST}
+      - POSTGRES_DB: ${POSTGRES_DB}
+      - POSTGRES_USER: ${POSTGRES_USER}
+      - POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     networks:
       - proxy_{{ nextcloud_container_name }}
       - internal

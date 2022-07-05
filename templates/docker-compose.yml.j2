@@ -51,6 +51,21 @@ services:
       - db
       - redis
 
+  cron:
+    image: nextcloud:24-apache
+    restart: always
+    volumes:
+      - ./nextcloud:/var/www/html:rw
+      - ./apps:/var/www/html/custom_apps:rw
+      - ./config:/var/www/html/config:rw
+      - cifs-cloudstorage:/var/www/html/data:rw
+    networks:
+      - internal
+    entrypoint: /cron.sh
+    depends_on:
+      - db
+      - redis
+
 volumes:
   cifs-cloudstorage:
     driver_opts:

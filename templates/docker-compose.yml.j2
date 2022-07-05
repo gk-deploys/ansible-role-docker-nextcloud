@@ -51,6 +51,7 @@ services:
       # for Apache to work with reverse proxy
       - APACHE_DISABLE_REWRITE_IP: true
       # set to reverse proxy IP address, i.e. caddy
+      - TRUSTED_PROXIES: caddy
       - POSTGRES_HOST: ${POSTGRES_HOST}
       - POSTGRES_DB: ${POSTGRES_DB}
       - POSTGRES_USER: ${POSTGRES_USER}

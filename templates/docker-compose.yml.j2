@@ -34,7 +34,8 @@ services:
       - ./nextcloud:/var/www/html
       - ./apps:/var/www/html/custom_apps
       - ./config:/var/www/html/config
-      - ./data:/var/www/html/data:rw
+      #- ./data:/var/www/html/data:rw
+      - cifs-cloudstorage:/var/www/html/data:rw
     env_file: .env
     environment:
       - POSTGRES_HOST=db
@@ -49,6 +50,13 @@ services:
     depends_on:
       - db
       - redis
+
+volumes:
+  cifs-cloudstorage:
+    driver_opts:
+      type: cifs
+      o: "username={{ nextcloud_cifs_user }},password={{ nextcloud_cifs_pass }},uid={{ nextcloud_cifs_uid }},gid={{ nextcloud_cifs_gid }},vers=3.0,rw"
+      device: "//{{ nas_ip_address }}/{{ nextcloud_cifs_share }}"
 
 networks:
   proxy_{{ nextcloud_container_name }}:

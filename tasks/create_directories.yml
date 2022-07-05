@@ -4,11 +4,12 @@
   file:
     path: "{{ nextcloud_basepath }}/{{ item }}"
     state: directory
-    owner: "{{ nextcloud_user_uid }}"
-    group: "{{ nextcloud_user_gid }}"
+    owner: docker
+    group: docker
     mode: '0700'
   loop:
     - nextcloud
     - apps
     - config
     - db
+    - data

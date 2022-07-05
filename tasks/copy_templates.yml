@@ -1,0 +1,12 @@
+---
+
+- name: Send docker-compose.yml and env file
+  template:
+    src: "{{ item.template_name }}"
+    dest: "{{ nextcloud_basepath }}/{{ item.config_name }}"
+    owner: docker
+    group: docker
+    mode: '0700'
+  loop: 
+    - { template_name: db.env.j2, config_name: db.env }
+    - { template_name: docker-compose.yml.j2, config_name: docker-compose.yml }

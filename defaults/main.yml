@@ -1,2 +1,19 @@
 ---
 # defaults file for docker-nextcloud
+nextcloud_container_name: nextcloud
+
+nextcloud_basepath: /srv/docker/nextcloud
+
+nextcloud_db_password: change_me
+nextcloud_db_root_password: change_me
+nextcloud_db_database: nextcloud
+nextcloud_db_user: nextcloud
+
+nextcloud_cifs_share: data
+nextcloud_cifs_user: nextcloud
+nextcloud_cifs_pass: change_me
+nextcloud_cifs_uid: 1000
+nextcloud_cifs_gid: 1000
+
+nas_ip_address: 192.168.1.100
+

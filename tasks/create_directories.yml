@@ -4,8 +4,8 @@
   file:
     path: "{{ nextcloud_basepath }}/{{ item }}"
     state: directory
-    owner: docker
-    group: docker
+    owner: www-data
+    group: www-data
     mode: '0700'
   loop:
     - nextcloud

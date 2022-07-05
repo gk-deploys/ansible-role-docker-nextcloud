@@ -9,9 +9,9 @@ nextcloud_db_root_password: change_me
 nextcloud_db_database: nextcloud
 nextcloud_db_user: nextcloud
 
-# needs to be 33 for www-data user/group, otherwise permission errors!
+# needs to be 33 for www-data (user) and 0 for root (group), otherwise permission errors!
 nextcloud_cifs_uid: 33
-nextcloud_cifs_gid: 33
+nextcloud_cifs_gid: 0
 nextcloud_cifs_share: data
 nextcloud_cifs_user: nextcloud
 nextcloud_cifs_pass: change_me

@@ -8,6 +8,8 @@ nextcloud_db_password: change_me
 nextcloud_db_root_password: change_me
 nextcloud_db_database: nextcloud
 nextcloud_db_user: nextcloud
+# https://hub.docker.com/_/postgres
+nextcloud_db_postgres_version: 14
 
 # needs to be 33 for www-data (user) and 0 for root (group), otherwise permission errors!
 nextcloud_cifs_uid: 33

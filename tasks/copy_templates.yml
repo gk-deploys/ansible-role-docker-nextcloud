@@ -1,7 +1,7 @@
 ---
 
 - name: Nextcloud - Send docker-compose.yml and env templates.
-  template:
+  ansible.builtin.template:
     src: "{{ item.template_name }}"
     dest: "{{ nextcloud_basepath }}/{{ item.config_name }}"
     owner: docker

@@ -1,6 +1,13 @@
 ---
 # defaults file for docker-nextcloud
 nextcloud_container_name: nextcloud
+nextcloud_use_traefik: no
+nextcloud_traefik_enabled: "false"
+nextcloud_traefik_loadbalancer_port: 80
+nextcloud_traefik_loadbalancer_scheme: http
+nextcloud_traefik_entrypoint: websecure
+nextcloud_traefik_tls: "true"
+nextcloud_traefik_tls_certresolver: production # staging | production 
 
 nextcloud_basepath: /srv/docker/nextcloud
 

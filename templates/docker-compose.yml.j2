@@ -41,11 +41,10 @@ services:
     environment:
       - POSTGRES_HOST=db
       - REDIS_HOST=redis
-      # for Apache to work with reverse proxy
+      # make Apache work with reverse proxy
       - APACHE_DISABLE_REWRITE_IP=1
-      # set to reverse proxy IP address, i.e. caddy
-      - TRUSTED_PROXIES=172.16.0.0/12
-      - NEXTCLOUD_TRUSTED_DOMAINS=kbck.at
+      - TRUSTED_PROXIES={{ nextcloud_trusted_proxies }}
+      - NEXTCLOUD_TRUSTED_DOMAINS={{ nextcloud_trusted_domains }}
     networks:
       - proxy_{{ nextcloud_container_name }}
       - internal

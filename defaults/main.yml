@@ -7,6 +7,11 @@ nextcloud_redis_version: 7.2.2
 nextcloud_postgres_version: 14.9
 
 nextcloud_container_name: nextcloud
+nextcloud_domain: example.com
+nextcloud_trusted_domains: example.com
+nextcloud_trusted_proxies: 172.16.0.0/12
+# -> nextcloud.example.com
+
 nextcloud_use_traefik: no
 nextcloud_traefik_enabled: "false"
 nextcloud_traefik_loadbalancer_port: 80

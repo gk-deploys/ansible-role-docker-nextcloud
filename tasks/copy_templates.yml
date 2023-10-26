@@ -1,6 +1,6 @@
 ---
 
-- name: Send docker-compose.yml and env file
+- name: Nextcloud - Send docker-compose.yml and env templates.
   template:
     src: "{{ item.template_name }}"
     dest: "{{ nextcloud_basepath }}/{{ item.config_name }}"

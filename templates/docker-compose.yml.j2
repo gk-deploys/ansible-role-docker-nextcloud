@@ -82,7 +82,7 @@ volumes:
   cifs-cloudstorage:
     driver_opts:
       type: cifs
-      o: "username=${CIFS_USER},password=${CIFS_PASS},uid=${nextcloud_cifs_uid},gid=${nextcloud_cifs_gid},vers=3.0,rw,dir_mode=0770,file_mode=0600"
+      o: "username=${CIFS_USER},password=${CIFS_PASS},uid=${CIFS_UID},gid=${CIFS_GID},vers=3.0,rw,dir_mode=0770,file_mode=0600"
       device: "//${CIFS_SHARE_IP}/${CIFS_SHARE_NAME}"
 
 networks:

@@ -5,14 +5,14 @@ version: '2'
 services:
 
   redis:
-    image: redis:alpine
+    image: redis:{{ nextcloud_redis_version }}-alpine
     restart: always
     networks:
       - internal
 
   # port 5432
   db:
-    image: postgres:{{ nextcloud_db_postgres_version }}
+    image: postgres:{{ nextcloud_postgres_version }}-alpine
     restart: always
     volumes:
       - ./db:/var/lib/postgresql/data
@@ -21,7 +21,7 @@ services:
       - internal
 
   app:
-    image: nextcloud:24-apache
+    image: nextcloud:{{ nextcloud_app_version }}-apache
     hostname: nextcloud
     container_name: {{ nextcloud_container_name }}
     restart: always
@@ -65,7 +65,7 @@ services:
     {% endif %}
 
   cron:
-    image: nextcloud:24-apache
+    image: nextcloud:{{ nextcloud_app_version }}-apache
     restart: always
     volumes:
       - ./nextcloud:/var/www/html:rw

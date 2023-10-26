@@ -1,5 +1,11 @@
 ---
-# defaults file for docker-nextcloud
+# https://hub.docker.com/r/nextcloud/all-in-one
+nextcloud_app_version: 24.0.12
+# https://hub.docker.com/_/redis
+nextcloud_redis_version: 7.2.2
+# https://hub.docker.com/_/postgres
+nextcloud_postgres_version: 14.9
+
 nextcloud_container_name: nextcloud
 nextcloud_use_traefik: no
 nextcloud_traefik_enabled: "false"

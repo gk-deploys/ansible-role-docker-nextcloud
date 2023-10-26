@@ -16,7 +16,7 @@
     group: "{{ item.group }}"
     mode: '0700'
   loop:
-    - { name: nextcloud, onwer: www-data, group: root }
-    - { name: apps, onwer: www-data, group: root }
-    - { name: config, onwer: www-data, group: root }
-    - { name: db, owner: 999, group: root }
+    - { owner: www-data, group: root, name: nextcloud }
+    - { owner: www-data, group: root, name: apps }
+    - { owner: www-data, group: root, name: config }
+    - { owner: 999, group: root, name: db }

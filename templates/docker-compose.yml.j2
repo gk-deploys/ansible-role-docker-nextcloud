@@ -45,6 +45,7 @@ services:
       - APACHE_DISABLE_REWRITE_IP=1
       - TRUSTED_PROXIES={{ nextcloud_trusted_proxies }}
       - NEXTCLOUD_TRUSTED_DOMAINS={{ nextcloud_trusted_domains }}
+      - OVERWRITEPROTOCOL=https
     networks:
       - proxy_{{ nextcloud_container_name }}
       - internal
@@ -78,7 +79,7 @@ services:
       - "traefik.http.middlewares.nextcloud_headers.headers.contentTypeNosniff=true"
       - "traefik.http.middlewares.nextcloud_headers.headers.customFrameOptionsValue=SAMEORIGIN"
       - "traefik.http.middlewares.nextcloud_headers.headers.customRequestHeaders.X-Forwarded-Proto=https"
-      - "traefik.http.middlewares.nextcloud_headers.headers.customResponseHeaders.X-Robots-Tag=noindex,nofollow"
+      - "traefik.http.middlewares.nextcloud_headers.headers.customRequestHeaders.X-Robots-Tag=noindex,nofollow"
       # - "traefik.http.middlewares.nextcloud_headers.headers.contentSecurityPolicy=default-src"
 {% endif %}
 

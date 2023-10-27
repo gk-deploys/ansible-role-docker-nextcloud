@@ -48,6 +48,7 @@ services:
       - OVERWRITEPROTOCOL=https
     networks:
       - proxy_{{ nextcloud_container_name }}
+      - internet
       - internal
     depends_on:
       - db
@@ -110,3 +111,6 @@ networks:
     external: true
   internal:
     internal: true
+  internet:
+    external: true
+

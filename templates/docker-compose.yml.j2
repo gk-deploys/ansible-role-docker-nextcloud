@@ -75,8 +75,11 @@ services:
       - "traefik.http.middlewares.nextcloud_headers.headers.forceSTSHeader=true"
       - "traefik.http.middlewares.nextcloud_headers.headers.referrerPolicy=no-referrer"
       - "traefik.http.middlewares.nextcloud_headers.headers.browserXssFilter=true"
-      - "traefik.http.middlewares.nextcloud_headers.headers.contentSecurityPolicy=default-src"
+      - "traefik.http.middlewares.nextcloud_headers.headers.contentTypeNosniff=true"
+      - "traefik.http.middlewares.nextcloud_headers.headers.customFrameOptionsValue=SAMEORIGIN"
       - "traefik.http.middlewares.nextcloud_headers.headers.customRequestHeaders.X-Forwarded-Proto=https"
+      - "traefik.http.middlewares.nextcloud_headers.headers.customResponseHeaders.X-Robots-Tag=noindex,nofollow"
+      # - "traefik.http.middlewares.nextcloud_headers.headers.contentSecurityPolicy=default-src"
       
 {% endif %}
 

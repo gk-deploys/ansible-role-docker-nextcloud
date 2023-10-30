@@ -6,6 +6,7 @@ services:
 
   redis:
     image: redis:{{ nextcloud_redis_version }}-alpine
+    container_name: {{ nextcloud_redis_container_name }}
     restart: always
     networks:
       - internal
@@ -13,6 +14,7 @@ services:
   # port 5432
   db:
     image: postgres:{{ nextcloud_postgres_version }}-alpine
+    container_name: {{ nextcloud_db_container_name }}
     restart: always
     volumes:
       - ./db:/var/lib/postgresql/data

@@ -38,3 +38,5 @@ nextcloud_cifs_user: nextcloud
 nextcloud_cifs_pass: change_me
 
 nas_ip_address: 192.168.1.100
+
+nextcloud_cronitor_id: your-secure-cronitor-id

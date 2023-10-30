@@ -1,13 +1,14 @@
 #/bin/bash
 
 PGPASSWORD={{ nextcloud_db_password }}
-now=$(date +"%Y-%m-%dT%H:%M:%S%z")
+now=$(date +"%Y-%m-%dT%H-%M-%S%z")
 
 docker exec -u www-data {{ nextcloud_container_name }} php occ maintenance:mode --on
 
 docker exec -i {{ nextcloud_db_container_name }} \
--w /backups \
-/bin/bash -c "PGPASSWORD=${PGPASSWORD} \
-pg_dump --username {{ nextcloud_db_user }} {{ nextcloud_db_database }}" > /cifs_storage/backups/$now.sql
+/bin/bash -c "PGPASSWORD=${PGPASSWORD} pg_dump \
+    --username {{ nextcloud_db_user }} \
+    --dbname {{ nextcloud_db_database }} \
+    --file /cifs_storage/backups/$now.sql"
 
 docker exec -u www-data nextcloud php occ maintenance:mode --off

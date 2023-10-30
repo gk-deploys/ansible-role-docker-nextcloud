@@ -22,10 +22,13 @@ nextcloud_traefik_tls_certresolver: production # staging | production
 
 nextcloud_basepath: /srv/docker/nextcloud
 
+nextcloud_db_container_name: nextcloud_database
 nextcloud_db_password: change_me
 nextcloud_db_root_password: change_me
 nextcloud_db_database: nextcloud
 nextcloud_db_user: nextcloud
+
+nextcloud_redis_container_name: nextcloud_redis
 
 # needs to be 33 for www-data (user) and 0 for root (group), otherwise permission errors!
 nextcloud_cifs_uid: 33

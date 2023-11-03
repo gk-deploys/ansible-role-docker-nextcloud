@@ -40,3 +40,14 @@ nextcloud_cifs_pass: change_me
 nas_ip_address: 192.168.1.100
 
 nextcloud_cronitor_id: your-secure-cronitor-id
+
+# S3
+nextcloud_s3_enable: no
+nextcloud_s3_access_key: your_secure_access_key
+nextcloud_s3_secret_key: your_secure_secret_key
+nextcloud_s3_bucketname: nextcloud-bucket
+nextcloud_s3_autocreate: 1
+nextcloud_s3_host: nextcloud-s3
+nextcloud_s3_port: 9000
+nextcloud_s3_use_path_style: 4
+nextcloud_s3_use_ssl: 1

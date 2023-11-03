@@ -49,6 +49,16 @@ services:
       - TRUSTED_PROXIES={{ nextcloud_trusted_proxies }}
       - NEXTCLOUD_TRUSTED_DOMAINS={{ nextcloud_trusted_domains }}
       - OVERWRITEPROTOCOL=https
+{% if nextcloud_s3_enable %}
+      - S3_ACCESS_KEY
+      - S3_SECRET_KEY
+      - S3_BUCKETNAME
+      - S3_AUTOCREATE
+      - S3_HOST
+      - S3_PORT
+      - S3_USE_PATH_STYLE
+      - S3_USE_SSL
+{% endifif %}
     networks:
       - proxy_{{ nextcloud_container_name }}
       - internet

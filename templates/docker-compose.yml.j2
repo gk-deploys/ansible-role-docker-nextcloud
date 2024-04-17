@@ -57,7 +57,6 @@ services:
       - OBJECTSTORE_S3_USEPATH_STYLE
       - OBJECTSTORE_S3_SSL
       - OBJECTSTORE_S3_REGION
-      
 {% endif %}
     networks:
       - proxy_{{ nextcloud_container_name }}
@@ -76,13 +75,23 @@ services:
       - "traefik.http.routers.nextcloud.rule=Host(`{{ nextcloud_container_name }}.{{ nextcloud_domain }}`)"
       - "traefik.http.routers.nextcloud.tls=true"
       - "traefik.http.routers.nextcloud.tls.certresolver={{ nextcloud_traefik_tls_certresolver }}"
-      - "traefik.http.routers.nextcloud.middlewares=nextcloud_redirectregex,nextcloud_headers"
+      - "traefik.http.routers.nextcloud.middlewares=nextcloud_redirectregex,nextcloud_headers,nextcloud-redirectregex1,nextcloud-redirectregex2,nextcloud-redirectregex3"
       # enable service discovery through the reverse proxy
       - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.permanent=true"
       - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex=https://(.*)/.well-known/(?:card|cal)dav"
       - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex=https://(.*)/.well-known/webfinger"
       - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex=https://(.*)/.well-known/nodeinfo"
       - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.replacement=https://$${1}/remote.php/dav"
+      # added 2024-04-17 from https://help.nextcloud.com/t/well-known-seems-to-work-but-still-a-warning-using-traefik/120462/8
+      - "traefik.http.middlewares.nextcloud-redirectregex1.redirectregex.permanent=true"
+      - "traefik.http.middlewares.nextcloud-redirectregex1.redirectregex.regex=https?://([^/]*)/.well-known/(card|cal)dav"
+      - "traefik.http.middlewares.nextcloud-redirectregex1.redirectregex.replacement=https://$${1}/remote.php/dav/"
+      - "traefik.http.middlewares.nextcloud-redirectregex2.redirectregex.permanent=true"
+      - "traefik.http.middlewares.nextcloud-redirectregex2.redirectregex.regex=https?://([^/]*)(/.well-known[^#]*)"
+      - "traefik.http.middlewares.nextcloud-redirectregex2.redirectregex.replacement=https://$${1}/index.php$${2}"
+      - "traefik.http.middlewares.nextcloud-redirectregex3.redirectregex.permanent=true"
+      - "traefik.http.middlewares.nextcloud-redirectregex3.redirectregex.regex=https?://([^/]*)/.well-known/nodeinfo"
+      - "traefik.http.middlewares.nextcloud-redirectregex3.redirectregex.replacement=https://$${1}/index.php/.well-known/nodeinfo"
       # HSTS
       - "traefik.http.middlewares.nextcloud_headers.headers.stsSeconds=15552000"
       - "traefik.http.middlewares.nextcloud_headers.headers.stsIncludeSubdomains=true"

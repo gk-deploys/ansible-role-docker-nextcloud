@@ -1,10 +1,10 @@
 ---
 # https://hub.docker.com/r/nextcloud/all-in-one
-nextcloud_app_version: 24.0.12
+nextcloud_app_version: 28.0.4
 # https://hub.docker.com/_/redis
 nextcloud_redis_version: 7.2.2
 # https://hub.docker.com/_/postgres
-nextcloud_postgres_version: 14.9
+nextcloud_postgres_version: 16.0
 
 nextcloud_container_name: nextcloud
 nextcloud_domain: example.com

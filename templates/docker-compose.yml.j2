@@ -22,7 +22,7 @@ services:
       - internal
 
   app:
-    image: nextcloud:{{ nextcloud_app_version }}-apache
+    image: nextcloud:${ NEXTCLOUD_APP_VERSION }-apache
     hostname: nextcloud
     container_name: {{ nextcloud_container_name }}
     restart: always
@@ -98,8 +98,8 @@ services:
 {% endif %}
 
   cron:
-    image: nextcloud:{{ nextcloud_app_version }}-apache
-    restart: always
+    image: nextcloud:${NEXTCLOUD_APP_VERSION}-apache
+    restart: unless-stopped
     volumes:
       - ./nextcloud:/var/www/html:rw
       - ./apps:/var/www/html/custom_apps:rw

@@ -22,7 +22,7 @@ services:
       - internal
 
   app:
-    image: nextcloud:${ NEXTCLOUD_APP_VERSION }-apache
+    image: nextcloud:${NEXTCLOUD_APP_VERSION}-apache
     hostname: nextcloud
     container_name: {{ nextcloud_container_name }}
     restart: unless-stopped
